@@ -20,8 +20,7 @@ To ensure accessibility and rapid prototyping, we have centralized the entire ap
 
 ### **Key Features for Newcomers**
 
-- **🗣️ Natural Language Search:** Type like you talk. *"I'm hungry and broke"* is a valid search query.
-- **🧠 Context Aware:** Understands constraints like *"I only have 15 minutes"* or *"It needs to be indoors."*
+- **🗣️ Natural Language Search:** Type like you talk. *"Im near the USF library, where can I find a microwave"* is a valid search query.
 - **🎧 Audio Guide:** Generates a friendly spoken guide, perfect for walking across campus without staring at a screen.
 - **☁️ Zero-Install/Cloud Native:** The entire app lives in the cloud. No downloads required---just open the link and go.
 
@@ -72,30 +71,8 @@ Since the entire architecture is centralized, running the app is effortless:
 - [x] **Audio Engine:** Implemented Text-to-Speech to provide turn-by-turn voice guidance.
 - [x] **Integration:** Connected all components (AI → Graph → UI) into the single Colab workflow.
 
-### **Hour 5: Refinement & Persona**
-
-- [ ] **Student Persona:** Refining the system prompt to sound like a helpful upperclassman.
-- [ ] **Edge Cases:** Handling "impossible" requests (e.g., "Swim to the library").
-
-### **Hour 6: Submission Prep**
+### **Hour 5-6: Refinement & Submission**
 
 - [ ] **Documentation:** Finalizing this README.
 - [ ] **Demo Video:** Recording the agent helping a "transfer student" find their first class.
 
-## **⚡ Key Code Snippet: The Central Logic**
-
-*This function demonstrates how we merge AI reasoning with mathematical pathfinding inside the notebook:*
-
-```python
-def get_navigation_intent(user_query):
-    """
-    Uses Gemini to translate 'I want coffee' into
-    {'target': 'Starbucks', 'reason': 'Closest coffee shop'}
-    """
-    response = model.generate_content(user_query)
-    intent = json.loads(response.text)
-    
-    # Pass intent to NetworkX for pathfinding
-    path = nx.shortest_path(G, source=intent['start'], target=intent['end'])
-    return path, intent['reasoning']
-```
