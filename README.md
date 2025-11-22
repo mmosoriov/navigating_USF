@@ -1,16 +1,14 @@
-# **🤘 BullsPath: The Intelligent Companion for New Students**
-
-> *"I'm a transfer student. I don't know where 'CMC' is. I just want a quiet place to study near a coffee shop."*
+# **🤘 BullsPath: The AI Companion for New Students**
 
 ## **💡 The Freshman Problem**
 
-For **Freshmen and Transfer Students**, stepping onto the massive USF campus for the first time is overwhelming. Official maps are designed for people who already know the building codes (e.g., "ENC 1002") and exact locations.
+For **Freshmen and Transfer Students**, stepping onto the massive USF campus for the first time is overwhelming. Official maps are designed for people who already know the building codes ("ENC 1002") and exact locations.
 
 New students don't think in coordinates; they think in **needs**:
 
 - *"Where can I find a microwave?"*
 - *"I need to print something before my 10 AM class."*
-- *"Where is the best place to take a nap?"*
+- *"Where is the closest place where I can get coffee"*
 
 There is currently no search engine at USF that bridges the gap between these vague, everyday questions and the physical campus layout.
 
