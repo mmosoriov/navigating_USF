@@ -1,97 +1,103 @@
-# navigating_USF
+# **🤘 BullsPath: The Intelligent Companion for New Students**
 
-# 🧭 USF SmartNav: The Vague Direction Agent
-**Track 2 Submission: AI Innovation / Everyday AI**
+> *"I'm a transfer student. I don't know where 'CMC' is. I just want a quiet place to study near a coffee shop."*
 
-> *"I don't know where 'CGS' is. I just want coffee near the library."*
+## **💡 The Freshman Problem**
 
----
+For **Freshmen and Transfer Students**, stepping onto the massive USF campus for the first time is overwhelming. Official maps are designed for people who already know the building codes (e.g., "ENC 1002") and exact locations.
 
-## 💡 The Problem
-Existing campus maps assume you know exactly where you are going. They require specific building names (e.g., "ENC 1002") and specific starting points. However, in everyday student life, needs are **vague** and **context-dependent**. Students search for *resources* (food, quiet study, printers), not just coordinates.
+New students don't think in coordinates; they think in **needs**:
 
-## 🤖 The Solution
-**USF SmartNav** is an AI-powered agent that bridges the gap between natural language and spatial navigation. Instead of hard-coding locations, we use a Large Language Model (LLM) to interpret user intent and constraints, then use Graph Algorithms to find the optimal path.
+- *"Where can I find a microwave?"*
+- *"I need to print something before my 10 AM class."*
+- *"Where is the best place to take a nap?"*
 
-### Key Features
-* **Intent Recognition:** Understands abstract goals like "I'm hungry" vs "I need to study."
-* **Constraint Handling:** Processes logic like "I only have 10 minutes" or "Must be near the library."
-* **Visual & Audio Output:** Generates a dynamic map visualization and a spoken audio guide for accessibility.
-* **Zero-Install:** Runs entirely in the browser via a self-contained HTML interface.
+There is currently no search engine at USF that bridges the gap between these vague, everyday questions and the physical campus layout.
 
----
+## **🤖 The Solution**
 
-## 🛠️ Tech Stack
-* **Environment:** Google Colab (Jupyter Notebook)
-* **Language:** Python 3.10+
-* **AI/LLM:** Google Gemini API (via `google-generativeai`)
-* **Pathfinding:** NetworkX ($A^*$ Algorithm)
-* **Visualization:** Matplotlib & Base64 encoding
-* **Audio:** gTTS (Google Text-to-Speech)
-* **Frontend:** HTML5 + Pico.css (Embedded in Python)
+**BullsPath** is an AI-powered navigation agent designed specifically to help newcomers feel at home instantly. Unlike static maps, it listens to natural language requests, understands context, and guides students to **resources**, not just buildings.
 
----
+To ensure accessibility and rapid prototyping, we have centralized the entire application---**Backend (Python), Logic (AI), and Frontend (React/HTML)**---into a single **Google Colab** environment.
 
-## 🚀 How to Run
-1.  Open the `SmartNav.ipynb` file in Google Colab.
-2.  Add your **Gemini API Key** in the notebook secrets or code block.
-3.  Run the installation cell:
-    ```python
-    !pip install networkx matplotlib google-generativeai gTTS
-    ```
-4.  Run all cells.
-5.  Type your request in the prompt (e.g., *"I am at the Marshall Center and need a burger."*)
-6.  The system will generate an interactive HTML dashboard below the cell.
+### **Key Features for Newcomers**
 
----
+- **🗣️ Natural Language Search:** Type like you talk. *"I'm hungry and broke"* is a valid search query.
+- **🧠 Context Aware:** Understands constraints like *"I only have 15 minutes"* or *"It needs to be indoors."*
+- **🎧 Audio Guide:** Generates a friendly spoken guide, perfect for walking across campus without staring at a screen.
+- **☁️ Zero-Install/Cloud Native:** The entire app lives in the cloud. No downloads required---just open the link and go.
 
-## 📅 Development Roadmap (6-Hour Hackathon Plan)
+## **🛠️ Centralized Tech Stack**
 
-### Hour 1: Foundation & Data (The "World")
-* [ ] **Create Map Data:** Define Python dictionary of nodes (USF Buildings) and edges (Paths).
-* [ ] **Setup Graph:** Initialize `networkx`. Add nodes and weighted edges (minutes).
-* [ ] **Test Logic:** Verify `nx.shortest_path` works for basic inputs.
+The entire project is contained within a single **Jupyter Notebook (Google Colab)**. This allows us to demo a full-stack application without complex server deployments.
 
-### Hour 2: The Brain (The LLM)
-* [ ] **Setup API:** Configure Google Gemini API.
-* [ ] **System Prompt:** Create prompt to convert English -> JSON (Start/End nodes).
-* [ ] **Testing:** Verify vague inputs ("I need caffeine") map to concrete nodes ("Starbucks").
+- **Environment:** Google Colab (Centralized Runtime)
+- **Brain (AI):** Google Gemini 2.0 Flash API (via google-generativeai)
+- **Navigation Logic:** NetworkX (A* Pathfinding on a weighted graph)
+- **Visualization:** Matplotlib (Dynamic map generation)
+- **Voice:** gTTS (Google Text-to-Speech)
+- **User Interface:** HTML5 + Tailwind CSS + Lucide Icons (Generated and served directly from Python)
 
-### Hour 3: The Visualization (The "Look")
-* [ ] **Plotting:** Write `matplotlib` function to visualize the graph.
-* [ ] **Styling:** Style nodes grey and the active path red.
-* [ ] **Encoding:** Implement `BytesIO` logic to convert plots to Base64 strings.
+## **🚀 How to Run BullsPath**
 
-### Hour 4: Integration (The "Interface")
-* [ ] **Audio:** Implement `gTTS` -> Base64 conversion.
-* [ ] **Frontend:** Create the HTML f-string template using Pico.css.
-* [ ] **Pipeline:** Connect Input -> LLM -> NetworkX -> Plot -> HTML.
+Since the entire architecture is centralized, running the app is effortless:
 
-### Hour 5: Refinement
-* [ ] **Persona:** Refine LLM system prompt to sound like a friendly USF student.
-* [ ] **Scenarios:** Prepare 3 demo scenarios (Coffee Run, Late for Class, Food Craving).
+1. **Open the Notebook:** Load the USF_SmartNav.ipynb file in [Google Colab](https://colab.research.google.com/).
+2. **Set API Key:** Add your **Gemini API Key** in the Colab secrets manager (Key name: GEMINI_API_KEY).
+3. **Install Dependencies:** Run the first cell to install the lightweight requirements:
+   ```
+   !pip install networkx matplotlib google-generativeai gTTS
+   ```
+4. **Launch:** Click "Run All".
+5. **Interact:** Scroll to the bottom cell. The AI Agent will process your request, calculate the path, generate the audio, and render the **Interactive HTML Interface** directly in the notebook output.
 
-### Hour 6: Submission
-* [ ] **Documentation:** Finalize code comments.
-* [ ] **Video:** Record screen capture of the agent in action.
-* [ ] **Submit:** Upload to Devpost.
+## **📅 Development Roadmap (6-Hour Hackathon)**
 
----
+### **Hour 1: The World (Data & Graph)**
 
-## ⚡ Helper Code: Audio to Base64
-*Utility function used for generating the HTML audio player:*
+- [x] **Campus Mapping:** Defined 20+ key USF locations (Library, MSC, Beard Garage, etc.) in a coordinate system.
+- [x] **Connectivity:** Built a weighted graph network using networkx to simulate walking paths and shortcuts.
+
+### **Hour 2: The Brain (Gemini AI)**
+
+- [x] **Intent Parsing:** Integrated Gemini 2.0 Flash to translate vague student queries ("I need food") into specific graph nodes.
+- [x] **Reasoning Engine:** Configured the LLM to explain *why* it chose a specific destination (e.g., "The honors building is closest to you.").
+
+### **Hour 3: The Eyes (Visualization)**
+
+- [x] **Dynamic Mapping:** Implemented matplotlib to dynamically draw the campus graph and highlight the optimal path in Green/Gold.
+- [x] **Base64 Encoding:** Created pipelines to convert generated images into web-ready formats instantly.
+
+### **Hour 4: The Interface (UI/UX)**
+
+- [x] **Frontend Generation:** Wrote a Python engine that generates a modern, responsive HTML/Tailwind interface.
+- [x] **Audio Engine:** Implemented Text-to-Speech to provide turn-by-turn voice guidance.
+- [x] **Integration:** Connected all components (AI → Graph → UI) into the single Colab workflow.
+
+### **Hour 5: Refinement & Persona**
+
+- [ ] **Student Persona:** Refining the system prompt to sound like a helpful upperclassman.
+- [ ] **Edge Cases:** Handling "impossible" requests (e.g., "Swim to the library").
+
+### **Hour 6: Submission Prep**
+
+- [ ] **Documentation:** Finalizing this README.
+- [ ] **Demo Video:** Recording the agent helping a "transfer student" find their first class.
+
+## **⚡ Key Code Snippet: The Central Logic**
+
+*This function demonstrates how we merge AI reasoning with mathematical pathfinding inside the notebook:*
 
 ```python
-import base64
-from io import BytesIO
-from gtts import gTTS
-
-def text_to_audio_base64(text_input):
-    # Generate audio in memory
-    tts = gTTS(text=text_input, lang='en', slow=False)
-    fp = BytesIO()
-    tts.write_to_fp(fp)
-    fp.seek(0)
+def get_navigation_intent(user_query):
+    """
+    Uses Gemini to translate 'I want coffee' into
+    {'target': 'Starbucks', 'reason': 'Closest coffee shop'}
+    """
+    response = model.generate_content(user_query)
+    intent = json.loads(response.text)
     
-    # Encode to Base64
-    return base64.b64encode(fp.read()).decode('utf-8')
+    # Pass intent to NetworkX for pathfinding
+    path = nx.shortest_path(G, source=intent['start'], target=intent['end'])
+    return path, intent['reasoning']
+```
